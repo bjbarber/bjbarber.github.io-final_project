@@ -1,6 +1,6 @@
 """Data related utility functions."""
 
-__author__ = ["", ""]
+__author__ = ["730640030", "730735849"]
 
 from csv import DictReader
 
@@ -51,7 +51,10 @@ def convert_columns_to_int(
 
     return data_converted
 
+
 """These are the functions we wrote/will write in class!"""
+
+
 def read_csv_rows(filename: str) -> list[dict[str, str]]:
     """Read the rows of a CSV into a 'table'."""
     result: list[dict[str, str]] = []
@@ -92,3 +95,76 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
         result[column] = column_values(row_table, column)
 
     return result
+
+
+def head(data_table: dict[str, list[str]], n: int) -> dict[str, list[str]]:
+    """Takes the first n rows from data table and populates it in a new dict()."""
+    shortened_data_table: dict[str, list[str]] = {}
+    # {} or dict() implements empty dict.
+
+    for key in data_table:
+        shortened_data_table[key] = data_table[key][:n]
+        # appends key and corresponding list[str].
+        # [:n] takes the lists in datatable[key] up to n value, including n.
+        # key represents the title of list; list is vertically oriented so [:n] takes n rows from that list.
+
+    return shortened_data_table
+
+
+def select(data_table: dict[str, list[str]], names: list[str]) -> dict[str, list[str]]:
+    """Takes a list of names, corresponding to each column, and populates those names as str for list of rows."""
+    new_table: dict[str, list[str]] = {}
+
+    for key in data_table:
+        if key in names:
+            new_table[key] = data_table[key]
+
+    return new_table
+
+
+def concat(
+    table1: dict[str, list[str]], table2: dict[str, list[str]]
+) -> dict[str, list[str]]:
+    """Creates a column based-table based from two different column-based tables."""
+    new_table: dict[str, list[str]] = {}
+
+    for key in table1:
+        new_table[key] = table1[key][:]
+        # makes a new table that is exactly the same as table 1.
+        # [:] slices value from list so it is independent/a copy, creating an entirely new list with new references.
+
+    for key in table2:
+        if key in new_table:
+            new_table[key] += table2[key]
+            # you only use append when adding a single element to a list.
+            # += allows us to add the full list.
+
+        else:
+            new_table[key] = table2[key][:]
+
+    return new_table
+
+
+def count(input: list[str]) -> dict[str, int]:
+    """Takes a list (column) and counts how many times a particular string is present in that list, storing the information as a dict()."""
+    count: dict[str, int] = {}
+
+    for key in input:
+        if key in count:
+            count[key] += 1
+        else:
+            count[key] = 1
+
+    return count
+
+
+def count_attendance(input: list[str]) -> int:
+    """Takes a list, representing a single column in the dataset, and counts every int value that does not equal zero."""
+
+    attended: int = 0
+
+    for key in input:
+        if key != "0":
+            attended += 1
+
+    return attended
