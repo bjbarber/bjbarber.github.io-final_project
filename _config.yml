@@ -18,14 +18,14 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@example.com
+title: COMP 110 Final Project
+email: bjbarber@unc.edu
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+ This project looks at survey data from 764 COMP110 students to understand how often people go to office hours, how helpful they think they are, and whether adding a recitation section would help. 
+ We found that most students who go to office hours think they’re useful, but a lot of students don’t go at all, and going doesn’t really change how difficult they think the class is. '
+ Overall, office hours are helpful but underused, and a recitation could make it easier for more students to get support.
+baseurl: "/final_project" # the subpath of your site, e.g. /blog
+url: "bjbarber.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
